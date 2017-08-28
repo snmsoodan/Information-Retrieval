@@ -1,0 +1,6 @@
+BM25    0.2748
+LM      0.2133
+OkapiTF 0.2331
+proximity+BM25  0.2767
+proximity  0.1785
+Stemmed/Without StopWords - index size 179MB

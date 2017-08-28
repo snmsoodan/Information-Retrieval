@@ -1,0 +1,6 @@
+same query same cluster : 77860
+same query different cluster : 269284
+different query different cluster : 2867930
+different query same cluster : 141150
+
+Accuracy : 87.77%

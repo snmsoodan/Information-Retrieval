@@ -1,0 +1,53 @@
+Your seed urls i.e. urls in your first frontier
+1527 MAJOR NUCLEAR ACCIDENTS
+	http://en.wikipedia.org/wiki/Lists_of_nuclear_disasters_and_radioactive_incidents
+	http://en.wikipedia.org/wiki/Nuclear_and_radiation_accidents_and_incidents
+152704 Kyshtym disaster
+	https://en.wikipedia.org/wiki/Kyshtym_disaster
+	-------------------------------------------------------------------------------------------------------------------
+Count of unique urls indexed individually
+21910
+
+-----------------------------------------------------------------------------------------------------------------------
+Time take to crawl
+8 hours
+-------------------------------------------------------------------------------------------------------------------------
+Total disk space size of your crawl or ES index size if applicable for Individual crawl
+3.66 GB
+-------------------------------------------------------------------------------------------------------------------------
+
+Time taken to merge
+4.5 hrs
+
+-----------------------------------------------------------------------------------------------------------------------
+
+Count of unique urls in Merged Index
+77000
+------------------------------------------------------------------------------------------------------------------------
+
+Merged ES index size
+41.1 GB
+------------------------------------------------------------------------------------------------------------------------
+Also provide a short explanation for:
+How do you decide which links to put in your Frontier list and which to ignore.
+
+the seed urls(3 in my case) are added to the queue. 
+A loop is put on the till the queue ends or the printed documents reach 20k.
+The url is taken from the queue which has a visited as false(in the start visited is false for all).
+The if the number of elements in the queue % 100(not if queue size is 0) is 0 then the queue is sorted and the data from from the queue is printed to the file.
+			The sorting is done with priority to depth*(1000) + relevance*(100) + inilnks*(10) values
+			
+now the link is connected to and the required elements like HTTPheader,title,text,inlinks,outlinks,depth,html_source is taken.
+ now the outlinks urls with absolute path is taken.The outlinks are added to the outlinks list of the url. 
+ NOw the outliks are onnected to and the relevancy is calcuated from the body and the outlinks are then added to the queue.
+ 
+ 
+ After the above process the the next url in the queue (lets say before we took the first seed url, so now the second url will be taken) and the the above process is repeated.
+ 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+How do you decide which link to crawl next, from your Frontier list.
+
+As explained  aboved while adding documents to the queue a relevance factor is calculated and the after every 100 additions to the queue ,the queue is sorted, Always giving more precedence to the depth
+(This ensures that the urls with the lower depth are printed first always);
+
